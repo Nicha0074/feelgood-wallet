@@ -1,1 +1,620 @@
 
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FeelGood Wallet - Dynamic Mood & Lifestyle Benefits</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Kanit', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen pb-12">
+
+  <!-- Header & Navigation -->
+  <header class="bg-gradient-to-r from-teal-600 via-emerald-600 to-indigo-600 text-white shadow-lg sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
+      <div class="flex items-center gap-3">
+        <div class="bg-white/20 p-2 rounded-xl backdrop-blur-md">
+          <i data-lucide="heart-handshake" class="w-8 h-8 text-amber-300"></i>
+        </div>
+        <div>
+          <h1 class="text-xl font-bold tracking-tight">FeelGood Wallet</h1>
+          <p class="text-xs text-teal-100">AuraBenefit: Emotional & Lifestyle Platform</p>
+        </div>
+      </div>
+
+      <!-- Mode Switcher -->
+      <div class="flex items-center bg-black/20 p-1 rounded-xl text-sm backdrop-blur-md">
+        <button id="btn-emp" onclick="switchTab('employee')" class="px-4 py-1.5 rounded-lg transition-all font-medium bg-white text-teal-700 shadow-md">
+          <i data-lucide="user" class="w-4 h-4 inline mr-1"></i> มุมมองพนักงาน
+        </button>
+        <button id="btn-hr" onclick="switchTab('hr')" class="px-4 py-1.5 rounded-lg transition-all font-medium text-white hover:text-teal-100">
+          <i data-lucide="bar-chart-3" class="w-4 h-4 inline mr-1"></i> Dashboard HR
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 mt-6">
+
+    <!-- ================= EMPLOYEE VIEW ================= -->
+    <div id="view-employee" class="space-y-6">
+
+      <!-- User Profile & Balance Summary -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- User Info -->
+        <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-center gap-4">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150" alt="Avatar" class="w-16 h-16 rounded-full object-cover border-2 border-teal-500">
+            <span class="absolute bottom-0 right-0 bg-emerald-500 w-4 h-4 rounded-full border-2 border-white"></span>
+          </div>
+          <div>
+            <h2 class="font-bold text-lg text-slate-800">กัญญาภัทร (แอน)</h2>
+            <p class="text-xs text-slate-500">UX/UI Designer • UX Team</p>
+            <span class="inline-block mt-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-700">
+              สถานะ: Active Employee
+            </span>
+          </div>
+        </div>
+
+        <!-- Mood Coin Wallet -->
+        <div class="bg-gradient-to-br from-amber-500 to-orange-500 p-5 rounded-2xl shadow-md text-white flex justify-between items-center relative overflow-hidden">
+          <div class="z-10">
+            <p class="text-amber-100 text-xs font-medium uppercase tracking-wider">ยอดเหรียญคงเหลือ</p>
+            <div class="flex items-baseline gap-2 mt-1">
+              <span id="user-coins" class="text-3xl font-extrabold tracking-tight">1,250</span>
+              <span class="text-sm text-amber-100">Mood Coins</span>
+            </div>
+            <p class="text-[11px] text-amber-100/80 mt-2">หมดอายุ: 31 ธ.ค. 2569</p>
+          </div>
+          <div class="bg-white/20 p-3 rounded-2xl backdrop-blur-md z-10">
+            <i data-lucide="coins" class="w-10 h-10 text-amber-100"></i>
+          </div>
+        </div>
+
+        <!-- Quick Action / Peer Gift -->
+        <div class="bg-gradient-to-br from-indigo-500 to-purple-600 p-5 rounded-2xl shadow-md text-white flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-medium text-indigo-100 uppercase tracking-wider">Peer-to-Peer Healing</span>
+              <i data-lucide="gift" class="w-5 h-5 text-indigo-200"></i>
+            </div>
+            <p class="text-sm font-semibold mt-1">ส่งพลังบวกให้เพื่อนร่วมงาน</p>
+            <p class="text-xs text-indigo-100 mt-1">ส่ง Coins สวัสดิการเป็นคูปองฮีลใจให้เพื่อนที่กำลังเหนื่อย</p>
+          </div>
+          <button onclick="openGiftModal()" class="mt-3 w-full bg-white text-indigo-600 font-medium text-xs py-2 px-3 rounded-xl hover:bg-indigo-50 transition-colors shadow-sm flex items-center justify-center gap-1.5">
+            <i data-lucide="send" class="w-3.5 h-3.5"></i> ส่งต่อเหรียญ/สวัสดิการ
+          </button>
+        </div>
+      </div>
+
+      <!-- Daily Mood Check-In -->
+      <div class="bg-white p-6 rounded-2xl shadow-sm border border-teal-100 relative overflow-hidden">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="bg-teal-100 text-teal-800 text-xs font-semibold px-2.5 py-1 rounded-md">Daily Check-In</span>
+              <span class="text-xs text-slate-400">อัปเดตล่าสุดวันนี้ 09:30 น.</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-800 mt-1">วันนี้คุณรู้สึกอย่างไรในการทำงาน?</h3>
+            <p class="text-xs text-slate-500">ระบบ AI จะวิเคราะห์และเสนอสวัสดิการที่เหมาะกับสภาวะจิตใจของคุณทันที</p>
+          </div>
+
+          <!-- Mood Buttons -->
+          <div class="flex gap-2 sm:gap-3 flex-wrap">
+            <button onclick="selectMood('happy')" id="mood-happy" class="mood-btn px-3 py-2 rounded-xl border border-slate-200 hover:border-emerald-400 hover:bg-emerald-50 transition-all flex flex-col items-center gap-1">
+              <span class="text-2xl">😊</span>
+              <span class="text-xs font-medium text-slate-600">สดใส/มีพลัง</span>
+            </button>
+            <button onclick="selectMood('tired')" id="mood-tired" class="mood-btn px-3 py-2 rounded-xl border border-slate-200 hover:border-amber-400 hover:bg-amber-50 transition-all flex flex-col items-center gap-1 bg-amber-50 border-amber-400 ring-2 ring-amber-400/20">
+              <span class="text-2xl">😮‍💨</span>
+              <span class="text-xs font-medium text-slate-600">เหนื่อยล้า</span>
+            </button>
+            <button onclick="selectMood('stressed')" id="mood-stressed" class="mood-btn px-3 py-2 rounded-xl border border-slate-200 hover:border-rose-400 hover:bg-rose-50 transition-all flex flex-col items-center gap-1">
+              <span class="text-2xl">🤯</span>
+              <span class="text-xs font-medium text-slate-600">เครียดจัด</span>
+            </button>
+            <button onclick="selectMood('burnt')" id="mood-burnt" class="mood-btn px-3 py-2 rounded-xl border border-slate-200 hover:border-purple-400 hover:bg-purple-50 transition-all flex flex-col items-center gap-1">
+              <span class="text-2xl">🔋</span>
+              <span class="text-xs font-medium text-slate-600">Burnout</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- AI Recommendation Banner -->
+        <div id="ai-recommendation-box" class="mt-4 p-4 rounded-xl bg-gradient-to-r from-amber-50 via-orange-50 to-amber-50 border border-amber-200 flex items-start gap-3">
+          <div class="bg-amber-500 text-white p-2 rounded-lg mt-0.5 shrink-0">
+            <i data-lucide="sparkles" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-amber-900 flex items-center gap-2">
+              AI Benefit Matcher: แนะนำพิเศษสำหรับคุณ
+              <span class="bg-amber-200 text-amber-800 text-[10px] px-2 py-0.5 rounded-full font-normal">ตรวจพบความเหนื่อยล้าสะสม</span>
+            </h4>
+            <p class="text-xs text-amber-800 mt-1">
+              เราเห็นว่าคุณลุยงานหนักมาตลอดสัปดาห์! สัปดาห์นี้ขอแนะนำสวัสดิการ **"นวดอโรมาฮีลใจ 60 นาที"** หรือ **"สิทธิ์ Mental Health Half-Day Off"** เพื่อเติมชาร์จแบตเตอรี่ร่างให้พร้อมกลับมาลุยต่อครับ
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Benefit Catalog Section -->
+      <div>
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4">
+          <div>
+            <h3 class="text-lg font-bold text-slate-800">คลังสวัสดิการอารมณ์ & ไลฟ์สไตล์ (Marketplace)</h3>
+            <p class="text-xs text-slate-500">เลือกแลกรับบริการฮีลใจและไลฟ์สไตล์ได้ตามต้องการ</p>
+          </div>
+
+          <!-- Category Filter -->
+          <div class="flex gap-2 overflow-x-auto w-full sm:w-auto pb-1">
+            <button onclick="filterCategory('all')" class="cat-btn bg-teal-600 text-white px-3 py-1.5 rounded-lg text-xs font-medium shadow-sm shrink-0">ทั้งหมด</button>
+            <button onclick="filterCategory('heal')" class="cat-btn bg-white border border-slate-200 text-slate-600 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-slate-50 shrink-0">ฮีลใจ & สุขภาพจิต</button>
+            <button onclick="filterCategory('energy')" class="cat-btn bg-white border border-slate-200 text-slate-600 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-slate-50 shrink-0">ชาร์จพลัง & เติมไฟ</button>
+            <button onclick="filterCategory('lifestyle')" class="cat-btn bg-white border border-slate-200 text-slate-600 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-slate-50 shrink-0">ไลฟ์สไตล์ & ทั่วไป</button>
+          </div>
+        </div>
+
+        <!-- Benefits Grid -->
+        <div id="benefits-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Dynamically Rendered via JS -->
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ================= HR DASHBOARD VIEW ================= -->
+    <div id="view-hr" class="hidden space-y-6">
+
+      <!-- HR Summary Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100">
+          <div class="flex justify-between items-center">
+            <span class="text-xs text-slate-500 font-medium">Burnout Risk Rate</span>
+            <span class="bg-emerald-100 text-emerald-700 text-[10px] px-2 py-0.5 rounded-full font-bold">-12% MoM</span>
+          </div>
+          <div class="text-2xl font-bold text-slate-800 mt-2">14.2%</div>
+          <p class="text-xs text-slate-400 mt-1">อยู่ในเกณฑ์ดีเยี่ยม (เป้าหมาย &lt; 20%)</p>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100">
+          <div class="flex justify-between items-center">
+            <span class="text-xs text-slate-500 font-medium">การใช้งานสวัสดิการ</span>
+            <span class="bg-emerald-100 text-emerald-700 text-[10px] px-2 py-0.5 rounded-full font-bold">+35% YoY</span>
+          </div>
+          <div class="text-2xl font-bold text-slate-800 mt-2">88.5%</div>
+          <p class="text-xs text-slate-400 mt-1">พนักงาน 354/400 คนใช้งานเดือนนี้</p>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100">
+          <div class="flex justify-between items-center">
+            <span class="text-xs text-slate-500 font-medium">เวลาประมวลผล HR Saved</span>
+            <span class="bg-indigo-100 text-indigo-700 text-[10px] px-2 py-0.5 rounded-full font-bold">Automation</span>
+          </div>
+          <div class="text-2xl font-bold text-slate-800 mt-2">85%</div>
+          <p class="text-xs text-slate-400 mt-1">ลดภาระเอกสารเบิกจ่ายด้วย E-Voucher</p>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100">
+          <div class="flex justify-between items-center">
+            <span class="text-xs text-slate-500 font-medium">คาดการณ์อัตราการลาออก</span>
+            <span class="bg-emerald-100 text-emerald-700 text-[10px] px-2 py-0.5 rounded-full font-bold">Turnover</span>
+          </div>
+          <div class="text-2xl font-bold text-emerald-600 mt-2">ลดลง 24%</div>
+          <p class="text-xs text-slate-400 mt-1">เปรียบเทียบกับไตรมาสก่อน</p>
+        </div>
+      </div>
+
+      <!-- Stress Heatmap & Top Benefits -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+        <!-- Anonymized Team Heatmap -->
+        <div class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+          <div class="flex justify-between items-center mb-4">
+            <div>
+              <h3 class="font-bold text-slate-800 text-base">Anonymized Stress & Mood Heatmap (รายแผนก)</h3>
+              <p class="text-xs text-slate-500">ข้อมูลประมวลผลแบบไม่ระบุตัวตน เพื่อความเป็นส่วนตัวของพนักงาน</p>
+            </div>
+            <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">Real-time Data</span>
+          </div>
+
+          <div class="space-y-4">
+            <!-- Team 1 -->
+            <div>
+              <div class="flex justify-between text-xs mb-1 font-medium">
+                <span class="text-slate-700">Marketing & Content Team (45 คน)</span>
+                <span class="text-rose-600 font-bold">ความเครียดสะสมสูง (42% High Stress)</span>
+              </div>
+              <div class="w-full bg-slate-100 rounded-full h-3 flex overflow-hidden">
+                <div class="bg-emerald-500 h-full" style="width: 30%"></div>
+                <div class="bg-amber-400 h-full" style="width: 28%"></div>
+                <div class="bg-rose-500 h-full" style="width: 42%"></div>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-1">💡 ข้อแนะนำ AI: HR ควรจัดส่งแพ็กเกจ "Mental Relief Half-Day" หรือสปาฮีลใจให้ทีมนี้เป็นพิเศษ</p>
+            </div>
+
+            <!-- Team 2 -->
+            <div>
+              <div class="flex justify-between text-xs mb-1 font-medium">
+                <span class="text-slate-700">Engineering & Tech Team (80 คน)</span>
+                <span class="text-amber-600 font-bold">ปานกลาง (25% High Stress)</span>
+              </div>
+              <div class="w-full bg-slate-100 rounded-full h-3 flex overflow-hidden">
+                <div class="bg-emerald-500 h-full" style="width: 50%"></div>
+                <div class="bg-amber-400 h-full" style="width: 25%"></div>
+                <div class="bg-rose-500 h-full" style="width: 25%"></div>
+              </div>
+            </div>
+
+            <!-- Team 3 -->
+            <div>
+              <div class="flex justify-between text-xs mb-1 font-medium">
+                <span class="text-slate-700">UX/UI & Product Design (30 คน)</span>
+                <span class="text-emerald-600 font-bold">สุขภาพจิตดี (10% High Stress)</span>
+              </div>
+              <div class="w-full bg-slate-100 rounded-full h-3 flex overflow-hidden">
+                <div class="bg-emerald-500 h-full" style="width: 70%"></div>
+                <div class="bg-amber-400 h-full" style="width: 20%"></div>
+                <div class="bg-rose-500 h-full" style="width: 10%"></div>
+              </div>
+            </div>
+
+            <!-- Team 4 -->
+            <div>
+              <div class="flex justify-between text-xs mb-1 font-medium">
+                <span class="text-slate-700">Customer Support Team (50 คน)</span>
+                <span class="text-amber-600 font-bold">ปานกลาง (30% High Stress)</span>
+              </div>
+              <div class="w-full bg-slate-100 rounded-full h-3 flex overflow-hidden">
+                <div class="bg-emerald-500 h-full" style="width: 40%"></div>
+                <div class="bg-amber-400 h-full" style="width: 30%"></div>
+                <div class="bg-rose-500 h-full" style="width: 30%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-4 text-xs text-slate-500">
+            <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-emerald-500"></span> ปกติ/สดใส</div>
+            <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-amber-400"></span> เหนื่อยล้าปานกลาง</div>
+            <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-rose-500"></span> เครียดสะสม/Burnout Risk</div>
+          </div>
+        </div>
+
+        <!-- Top Redeemed Benefits -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+          <h3 class="font-bold text-slate-800 text-base mb-4">สวัสดิการยอดนิยมเดือนนี้</h3>
+          <div class="space-y-3">
+            <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <span class="text-xl">💆‍♀️</span>
+                <div>
+                  <div class="font-medium text-xs text-slate-800">นวดอโรมา & สปาฮีลใจ</div>
+                  <div class="text-[11px] text-slate-400">หมวดฮีลใจ</div>
+                </div>
+              </div>
+              <span class="text-xs font-bold text-teal-600">142 ครั้ง</span>
+            </div>
+
+            <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <span class="text-xl">🌿</span>
+                <div>
+                  <div class="font-medium text-xs text-slate-800">Mental Health Half-Day Off</div>
+                  <div class="text-[11px] text-slate-400">หมวดฮีลใจ</div>
+                </div>
+              </div>
+              <span class="text-xs font-bold text-teal-600">98 ครั้ง</span>
+            </div>
+
+            <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <span class="text-xl">☕</span>
+                <div>
+                  <div class="font-medium text-xs text-slate-800">คูปอง Craft Coffee & Bakery</div>
+                  <div class="text-[11px] text-slate-400">หมวดเติมไฟ</div>
+                </div>
+              </div>
+              <span class="text-xs font-bold text-teal-600">85 ครั้ง</span>
+            </div>
+
+            <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <span class="text-xl">🧘‍♀️</span>
+                <div>
+                  <div class="font-medium text-xs text-slate-800">ปรึกษานักจิตวิทยาออนไลน์</div>
+                  <div class="text-[11px] text-slate-400">หมวดสุขภาพจิต</div>
+                </div>
+              </div>
+              <span class="text-xs font-bold text-teal-600">64 ครั้ง</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Redeem Modal -->
+  <div id="redeem-modal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-center shadow-xl space-y-4">
+      <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-2xl">
+        🎉
+      </div>
+      <h3 id="modal-title" class="text-lg font-bold text-slate-800">ยืนยันการแลกรับสวัสดิการ</h3>
+      <p id="modal-desc" class="text-xs text-slate-500">คุณกำลังจะใช้ Mood Coins เพื่อแลกรับ e-Voucher นี้</p>
+      
+      <!-- QR Code Placeholder -->
+      <div class="bg-slate-50 p-4 rounded-2xl border border-dashed border-slate-200">
+        <div class="w-32 h-32 bg-slate-800 rounded-xl mx-auto flex items-center justify-center text-white text-xs font-mono">
+          [ E-VOUCHER QR ]
+        </div>
+        <p class="text-[10px] text-slate-400 mt-2">แสดง QR Code นี้แก่ร้านค้าหรือยื่นให้ HR เพื่อใช้สิทธิ์</p>
+      </div>
+
+      <div class="flex gap-2">
+        <button onclick="closeRedeemModal()" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-medium py-2.5 rounded-xl transition-colors">
+          ปิดหน้าต่าง
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Peer Gift Modal -->
+  <div id="gift-modal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-xl space-y-4">
+      <div class="flex justify-between items-center">
+        <h3 class="text-base font-bold text-slate-800 flex items-center gap-2">
+          <i data-lucide="gift" class="w-5 h-5 text-indigo-500"></i>
+          ส่งต่อกำลังใจให้เพื่อนร่วมทีม
+        </h3>
+        <button onclick="closeGiftModal()" class="text-slate-400 hover:text-slate-600 text-lg">✕</button>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block font-medium text-slate-700 mb-1">เลือกเพื่อนร่วมงาน</label>
+          <select class="w-full p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-indigo-500">
+            <option>สมชาย (บอย) - Marketing</option>
+            <option>ภัทรา (พลอย) - Developer</option>
+            <option>ณัฐดนัย (นัท) - Customer Support</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-medium text-slate-700 mb-1">จำนวน Mood Coins ที่ต้องการส่ง</label>
+          <input type="number" value="100" class="w-full p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-indigo-500">
+        </div>
+
+        <div>
+          <label class="block font-medium text-slate-700 mb-1">ข้อความฮีลใจ/ให้กำลังใจ</label>
+          <textarea rows="3" class="w-full p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-indigo-500" placeholder="เห็นช่วงนี้ลุยโปรเจกต์หนัก พักผ่อนบ้างนะเพื่อน! ส่งกาแฟมาให้ฮีลใจจ้า ☕✨"></textarea>
+        </div>
+      </div>
+
+      <button onclick="submitGift()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-xs py-3 rounded-xl transition-colors shadow-md">
+        ส่งต่อพลังบวกทันที
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Lucide Icons Initialization
+    lucide.createIcons();
+
+    // Data for Benefits
+    const benefitsData = [
+      {
+        id: 1,
+        title: "นวดอโรมา & สปาฮีลใจ 60 นาที",
+        category: "heal",
+        coins: 300,
+        icon: "💆‍♀️",
+        tag: "AI Recommended",
+        badgeColor: "bg-amber-100 text-amber-800",
+        desc: "คลายความเหนื่อยล้าจากการทำงานหน้าคอม ออฟฟิศซินโดรม"
+      },
+      {
+        id: 2,
+        title: "Mental Health Half-Day Off",
+        category: "heal",
+        coins: 500,
+        icon: "🌿",
+        tag: "ยอดนิยม",
+        badgeColor: "bg-emerald-100 text-emerald-800",
+        desc: "สิทธิ์ลาพักใจครึ่งวัน โดยไม่เสียวันลาพักร้อน"
+      },
+      {
+        id: 3,
+        title: "ปรึกษานักจิตวิทยาออนไลน์ (Tele-Mental)",
+        category: "heal",
+        coins: 200,
+        icon: "🧘‍♀️",
+        tag: "Private 100%",
+        badgeColor: "bg-purple-100 text-purple-800",
+        desc: "พูดคุยระบายความเครียดกับผู้เชี่ยวชาญแบบส่วนตัว"
+      },
+      {
+        id: 4,
+        title: "คูปอง Craft Coffee & Specialty Bakery",
+        category: "energy",
+        coins: 100,
+        icon: "☕",
+        tag: "เติมไฟ",
+        badgeColor: "bg-orange-100 text-orange-800",
+        desc: "รับสิทธิ์เครื่องดื่มและขนมฟรี 2 แก้ว/สัปดาห์"
+      },
+      {
+        id: 5,
+        title: "Class Pass ออกกำลังกาย & ฟิตเนส",
+        category: "energy",
+        coins: 250,
+        icon: "🏋️‍♂️",
+        tag: "สุขภาพ",
+        badgeColor: "bg-blue-100 text-blue-800",
+        desc: "เข้าฟิตเนส โยคะ คลาสชกมวย ได้มากกว่า 50 สถาบัน"
+      },
+      {
+        id: 6,
+        title: "บริการแม่บ้านทำความสะอาดบ้าน/คอนโด",
+        category: "lifestyle",
+        coins: 400,
+        icon: "🧹",
+        tag: "ผ่อนแรง",
+        badgeColor: "bg-teal-100 text-teal-800",
+        desc: "ช่วยทำความสะอาดบ้าน 2 ชม. ให้คุณมีเวลาพักผ่อนจริงจัง"
+      }
+    ];
+
+    let userCoins = 1250;
+
+    // Render Benefits Cards
+    function renderBenefits(category = 'all') {
+      const container = document.getElementById('benefits-container');
+      container.innerHTML = '';
+
+      const filtered = category === 'all' 
+        ? benefitsData 
+        : benefitsData.filter(b => b.category === category);
+
+      filtered.forEach(item => {
+        const card = document.createElement('div');
+        card.className = "bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all flex flex-col justify-between";
+        card.innerHTML = `
+          <div>
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-3xl">${item.icon}</span>
+              <span class="${item.badgeColor} text-[10px] px-2 py-0.5 rounded-full font-semibold">${item.tag}</span>
+            </div>
+            <h4 class="font-bold text-slate-800 text-sm mt-1">${item.title}</h4>
+            <p class="text-xs text-slate-500 mt-1">${item.desc}</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-50 flex justify-between items-center">
+            <div class="flex items-center gap-1 font-bold text-amber-600 text-sm">
+              <i data-lucide="coins" class="w-4 h-4"></i>
+              ${item.coins} Coins
+            </div>
+            <button onclick="redeemBenefit('${item.title}', ${item.coins})" class="bg-teal-600 hover:bg-teal-700 text-white text-xs px-3 py-1.5 rounded-lg font-medium transition-colors shadow-sm">
+              แลกรับสิทธิ์
+            </button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+      lucide.createIcons();
+    }
+
+    // Filter Categories
+    function filterCategory(cat) {
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.classList.remove('bg-teal-600', 'text-white');
+        btn.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+      });
+      event.target.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+      event.target.classList.add('bg-teal-600', 'text-white');
+      
+      renderBenefits(cat);
+    }
+
+    // Select Mood Interaction
+    function selectMood(type) {
+      const aiBox = document.getElementById('ai-recommendation-box');
+      document.querySelectorAll('.mood-btn').forEach(btn => {
+        btn.classList.remove('bg-amber-50', 'border-amber-400', 'ring-2', 'ring-amber-400/20');
+      });
+
+      if (type === 'tired') {
+        document.getElementById('mood-tired').classList.add('bg-amber-50', 'border-amber-400', 'ring-2', 'ring-amber-400/20');
+        aiBox.innerHTML = `
+          <div class="bg-amber-500 text-white p-2 rounded-lg mt-0.5 shrink-0"><i data-lucide="sparkles" class="w-5 h-5"></i></div>
+          <div>
+            <h4 class="text-sm font-bold text-amber-900 flex items-center gap-2">
+              AI Benefit Matcher: แนะนำพิเศษสำหรับคุณ
+              <span class="bg-amber-200 text-amber-800 text-[10px] px-2 py-0.5 rounded-full font-normal">ตรวจพบความเหนื่อยล้าสะสม</span>
+            </h4>
+            <p class="text-xs text-amber-800 mt-1">เราเห็นว่าคุณลุยงานหนักมาตลอดสัปดาห์! สัปดาห์นี้ขอแนะนำสวัสดิการ **"นวดอโรมาฮีลใจ 60 นาที"** หรือ **"สิทธิ์ Mental Health Half-Day Off"** เพื่อเติมชาร์จแบตเตอรี่ร่างให้พร้อมกลับมาลุยต่อครับ</p>
+          </div>
+        `;
+      } else if (type === 'happy') {
+        document.getElementById('mood-happy').classList.add('bg-emerald-50', 'border-emerald-400', 'ring-2', 'ring-emerald-400/20');
+        aiBox.innerHTML = `
+          <div class="bg-emerald-500 text-white p-2 rounded-lg mt-0.5 shrink-0"><i data-lucide="sparkles" class="w-5 h-5"></i></div>
+          <div>
+            <h4 class="text-sm font-bold text-emerald-900 flex items-center gap-2">
+              AI Benefit Matcher: พลังกายเต็มร้อย!
+              <span class="bg-emerald-200 text-emerald-800 text-[10px] px-2 py-0.5 rounded-full font-normal">พลังงานระดับสูง</span>
+            </h4>
+            <p class="text-xs text-emerald-800 mt-1">วันนี้อารมณ์ดีและมีพลังเต็มเปี่ยม! แนะนำสวัสดิการ **"Class Pass ออกกำลังกาย/คลาสชกมวย"** หรือแลกคูปองเรียนคอร์สออนไลน์พัฒนาตัวเองกันได้เลยครับ!</p>
+          </div>
+        `;
+      } else if (type === 'stressed' || type === 'burnt') {
+        document.getElementById('mood-stressed').classList.add('bg-rose-50', 'border-rose-400', 'ring-2', 'ring-rose-400/20');
+        aiBox.innerHTML = `
+          <div class="bg-rose-500 text-white p-2 rounded-lg mt-0.5 shrink-0"><i data-lucide="sparkles" class="w-5 h-5"></i></div>
+          <div>
+            <h4 class="text-sm font-bold text-rose-900 flex items-center gap-2">
+              AI Benefit Matcher: ตรวจพบภาวะความเครียดสูง (High Stress)
+              <span class="bg-rose-200 text-rose-800 text-[10px] px-2 py-0.5 rounded-full font-normal">ต้องการการดูแลทันที</span>
+            </h4>
+            <p class="text-xs text-rose-800 mt-1">คุณกำลังแบกความเครียดไว้มากเกินไป ขอแนะนำ **"ปรึกษานักจิตวิทยาออนไลน์ (Tele-mental Health)"** แบบส่วนตัว หรือใช้สิทธิ์ **"Mental Health Half-Day Off"** พักผ่อนทันทีโดยไม่มีผลต่อประวัติการทำงานครับ</p>
+          </div>
+        `;
+      }
+      lucide.createIcons();
+    }
+
+    // Switch Views
+    function switchTab(tab) {
+      if (tab === 'employee') {
+        document.getElementById('view-employee').classList.remove('hidden');
+        document.getElementById('view-hr').classList.add('hidden');
+        document.getElementById('btn-emp').className = "px-4 py-1.5 rounded-lg transition-all font-medium bg-white text-teal-700 shadow-md";
+        document.getElementById('btn-hr').className = "px-4 py-1.5 rounded-lg transition-all font-medium text-white hover:text-teal-100";
+      } else {
+        document.getElementById('view-employee').classList.add('hidden');
+        document.getElementById('view-hr').classList.remove('hidden');
+        document.getElementById('btn-hr').className = "px-4 py-1.5 rounded-lg transition-all font-medium bg-white text-teal-700 shadow-md";
+        document.getElementById('btn-emp').className = "px-4 py-1.5 rounded-lg transition-all font-medium text-white hover:text-teal-100";
+      }
+    }
+
+    // Redeem Logic
+    function redeemBenefit(title, cost) {
+      if (userCoins < cost) {
+        alert("ขออภัย เหรียญ Mood Coins ของคุณไม่เพียงพอ");
+        return;
+      }
+      userCoins -= cost;
+      document.getElementById('user-coins').innerText = userCoins.toLocaleString();
+      document.getElementById('modal-title').innerText = `แลกรับ "${title}" สำเร็จ!`;
+      document.getElementById('modal-desc').innerText = `หัก ${cost} Mood Coins เรียบร้อยแล้ว (เหรียญคงเหลือ: ${userCoins} Coins)`;
+      document.getElementById('redeem-modal').classList.remove('hidden');
+    }
+
+    function closeRedeemModal() {
+      document.getElementById('redeem-modal').classList.add('hidden');
+    }
+
+    function openGiftModal() {
+      document.getElementById('gift-modal').classList.remove('hidden');
+    }
+
+    function closeGiftModal() {
+      document.getElementById('gift-modal').classList.add('hidden');
+    }
+
+    function submitGift() {
+      alert("ส่งต่อพลังบวกและ Mood Coins ให้เพื่อนร่วมงานสำเร็จ!");
+      closeGiftModal();
+    }
+
+    // Initialize
+    renderBenefits();
+  </script>
+</body>
+</html>
