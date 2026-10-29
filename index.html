@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FeelGood Wallet - Dynamic Mood & Lifestyle Benefits</title>
+  <title>FeelGood Wallet - Dynamic Mood, Leave & Offboarding Benefits</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -21,7 +21,7 @@
         </div>
         <div>
           <h1 class="text-xl font-bold tracking-tight">FeelGood Wallet</h1>
-          <p class="text-xs text-teal-100">AuraBenefit: Emotional & Lifestyle Platform</p>
+          <p class="text-xs text-teal-100">AuraBenefit: Mood, Leave & Smart Offboarding</p>
         </div>
       </div>
 
@@ -43,18 +43,18 @@
     <div id="view-employee" class="space-y-6">
 
       <!-- User Profile & Balance Summary -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
         <!-- User Info -->
         <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-center gap-4">
           <div class="relative">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150" alt="Avatar" class="w-16 h-16 rounded-full object-cover border-2 border-teal-500">
-            <span class="absolute bottom-0 right-0 bg-emerald-500 w-4 h-4 rounded-full border-2 border-white"></span>
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150" alt="Avatar" class="w-14 h-14 rounded-full object-cover border-2 border-teal-500">
+            <span class="absolute bottom-0 right-0 bg-emerald-500 w-3.5 h-3.5 rounded-full border-2 border-white"></span>
           </div>
           <div>
-            <h2 class="font-bold text-lg text-slate-800">กัญญาภัทร (แอน)</h2>
+            <h2 class="font-bold text-base text-slate-800">กัญญาภัทร (แอน)</h2>
             <p class="text-xs text-slate-500">UX/UI Designer • UX Team</p>
-            <span class="inline-block mt-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-700">
-              สถานะ: Active Employee
+            <span class="inline-block mt-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-emerald-100 text-emerald-700">
+              Active Employee
             </span>
           </div>
         </div>
@@ -65,27 +65,42 @@
             <p class="text-amber-100 text-xs font-medium uppercase tracking-wider">ยอดเหรียญคงเหลือ</p>
             <div class="flex items-baseline gap-2 mt-1">
               <span id="user-coins" class="text-3xl font-extrabold tracking-tight">1,250</span>
-              <span class="text-sm text-amber-100">Mood Coins</span>
+              <span class="text-xs text-amber-100">Coins</span>
             </div>
-            <p class="text-[11px] text-amber-100/80 mt-2">หมดอายุ: 31 ธ.ค. 2569</p>
+            <p class="text-[10px] text-amber-100/80 mt-1">หมดอายุ: 31 ธ.ค. 2569</p>
           </div>
-          <div class="bg-white/20 p-3 rounded-2xl backdrop-blur-md z-10 text-3xl">
+          <div class="bg-white/20 p-3 rounded-2xl backdrop-blur-md z-10 text-2xl">
             🪙
           </div>
         </div>
 
-        <!-- Quick Action / Peer Gift -->
-        <div class="bg-gradient-to-br from-indigo-500 to-purple-600 p-5 rounded-2xl shadow-md text-white flex flex-col justify-between">
+        <!-- Quick Action: ยื่นการลาพักผ่อน -->
+        <div class="bg-gradient-to-br from-emerald-500 to-teal-600 p-5 rounded-2xl shadow-md text-white flex flex-col justify-between">
           <div>
             <div class="flex justify-between items-center">
-              <span class="text-xs font-medium text-indigo-100 uppercase tracking-wider">Peer-to-Peer Healing</span>
-              <span class="text-xl">🎁</span>
+              <span class="text-xs font-medium text-emerald-100 uppercase tracking-wider">Leave Portal</span>
+              <span class="text-xl">🌿</span>
             </div>
-            <p class="text-sm font-semibold mt-1">ส่งพลังบวกให้เพื่อนร่วมงาน</p>
-            <p class="text-xs text-indigo-100 mt-1">ส่ง Coins สวัสดิการเป็นคูปองฮีลใจให้เพื่อนที่กำลังเหนื่อย</p>
+            <p class="text-sm font-semibold mt-1">ระบบยื่นการลาพักใจ / ลาพักร้อน</p>
+            <p class="text-xs text-emerald-100 mt-1">ยื่นลาพักใจอนุมัติทันทีด้วย AI</p>
           </div>
-          <button onclick="openGiftModal()" class="mt-3 w-full bg-white text-indigo-600 font-medium text-xs py-2 px-3 rounded-xl hover:bg-indigo-50 transition-colors shadow-sm flex items-center justify-center gap-1.5">
-            ✈️ ส่งต่อเหรียญ/สวัสดิการ
+          <button onclick="openLeaveModal()" class="mt-2 w-full bg-white text-teal-700 font-medium text-xs py-2 px-3 rounded-xl hover:bg-emerald-50 transition-colors shadow-sm flex items-center justify-center gap-1.5">
+            📝 ยื่นใบลาหยุด
+          </button>
+        </div>
+
+        <!-- Quick Action: ยื่นแจ้งลาออก -->
+        <div class="bg-gradient-to-br from-slate-700 to-slate-800 p-5 rounded-2xl shadow-md text-white flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-medium text-slate-300 uppercase tracking-wider">Offboarding</span>
+              <span class="text-xl">🚪</span>
+            </div>
+            <p class="text-sm font-semibold mt-1">แจ้งความประสงค์ลาออก</p>
+            <p class="text-xs text-slate-300 mt-1">Exit Survey ร่วมส่งต่อข้อเสนอแนะ</p>
+          </div>
+          <button onclick="openResignModal()" class="mt-2 w-full bg-rose-600 hover:bg-rose-700 text-white font-medium text-xs py-2 px-3 rounded-xl transition-colors shadow-sm flex items-center justify-center gap-1.5">
+            👋 ยื่นเรื่องลาออก
           </button>
         </div>
       </div>
@@ -125,16 +140,14 @@
 
         <!-- AI Recommendation Banner -->
         <div id="ai-recommendation-box" class="mt-4 p-4 rounded-xl bg-gradient-to-r from-rose-50 via-orange-50 to-amber-50 border border-rose-200 flex items-start gap-3">
-          <div class="bg-rose-500 text-white p-2 rounded-lg mt-0.5 shrink-0 text-xl">
-            ✨
-          </div>
+          <div class="bg-rose-500 text-white p-2 rounded-lg mt-0.5 shrink-0 text-xl">✨</div>
           <div>
             <h4 class="text-sm font-bold text-rose-900 flex items-center gap-2">
               AI Benefit Matcher: ตรวจพบภาวะความเครียดสูง (High Stress)
               <span class="bg-rose-200 text-rose-800 text-[10px] px-2 py-0.5 rounded-full font-normal">ต้องการการดูแลทันที</span>
             </h4>
             <p class="text-xs text-rose-800 mt-1">
-              คุณกำลังแบกความเครียดไว้มากเกินไป ขอแนะนำ **"ปรึกษานักจิตวิทยาออนไลน์ (Tele-mental Health)"** แบบส่วนตัว หรือใช้สิทธิ์ **"Mental Health Half-Day Off"** พักผ่อนทันทีโดยไม่มีผลต่อประวัติการทำงานครับ
+              คุณกำลังแบกความเครียดไว้มากเกินไป ขอแนะนำ **"ปรึกษานักจิตวิทยาออนไลน์ (Tele-mental Health)"** แบบส่วนตัว หรือใช้ปุ่ม **"ยื่นใบลาหยุด"** ด้านบนเพื่อใช้สิทธิ์ Mental Health Half-Day Off ได้ทันทีครับ
             </p>
           </div>
         </div>
@@ -190,24 +203,24 @@
 
         <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100">
           <div class="flex justify-between items-center">
-            <span class="text-xs text-slate-500 font-medium">เวลาประมวลผล HR Saved</span>
-            <span class="bg-indigo-100 text-indigo-700 text-[10px] px-2 py-0.5 rounded-full font-bold">Automation</span>
+            <span class="text-xs text-slate-500 font-medium">การแจ้งลาหยุดเดือนนี้</span>
+            <span class="bg-teal-100 text-teal-700 text-[10px] px-2 py-0.5 rounded-full font-bold">Mental Leaves</span>
           </div>
-          <div class="text-2xl font-bold text-slate-800 mt-2">85%</div>
-          <p class="text-xs text-slate-400 mt-1">ลดภาระเอกสารเบิกจ่ายด้วย E-Voucher</p>
+          <div class="text-2xl font-bold text-slate-800 mt-2">48 ครั้ง</div>
+          <p class="text-xs text-slate-400 mt-1">อนุมัติอัตโนมัติด้วย AI 100%</p>
         </div>
 
         <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100">
           <div class="flex justify-between items-center">
-            <span class="text-xs text-slate-500 font-medium">คาดการณ์อัตราการลาออก</span>
-            <span class="bg-emerald-100 text-emerald-700 text-[10px] px-2 py-0.5 rounded-full font-bold">Turnover</span>
+            <span class="text-xs text-slate-500 font-medium">แจ้งลาออกเดือนนี้</span>
+            <span class="bg-rose-100 text-rose-700 text-[10px] px-2 py-0.5 rounded-full font-bold">Exit Requests</span>
           </div>
-          <div class="text-2xl font-bold text-emerald-600 mt-2">ลดลง 24%</div>
-          <p class="text-xs text-slate-400 mt-1">เปรียบเทียบกับไตรมาสก่อน</p>
+          <div class="text-2xl font-bold text-rose-600 mt-2">2 ราย</div>
+          <p class="text-xs text-slate-400 mt-1">อยู่ระหว่างกระบวนการ Exit Survey</p>
         </div>
       </div>
 
-      <!-- Stress Heatmap & Top Benefits -->
+      <!-- Stress Heatmap & Exit Reasons Analytics -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
         <!-- Anonymized Team Heatmap -->
@@ -259,10 +272,26 @@
             </div>
           </div>
 
-          <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-4 text-xs text-slate-500">
-            <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-emerald-500"></span> ปกติ/สดใส</div>
-            <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-amber-400"></span> เหนื่อยล้าปานกลาง</div>
-            <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-rose-500"></span> เครียดสะสม/Burnout Risk</div>
+          <!-- Exit Reason Insight Box -->
+          <div class="mt-6 pt-5 border-t border-slate-100">
+            <h4 class="font-bold text-slate-800 text-sm mb-3">📊 สรุปสาเหตุการแจ้งลาออกหลัก (AI Sentiment Insights)</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+              <div class="p-3 bg-rose-50 rounded-xl border border-rose-100">
+                <div class="font-semibold text-rose-800">1. ภาวะ Burnout / ภาระงานเกินขีดจำกัด</div>
+                <div class="text-rose-600 mt-1 font-bold text-lg">45%</div>
+                <p class="text-[10px] text-rose-500">ข้อเสนอแนะ: ปรับปรุง Workflow กระจายภาระงาน</p>
+              </div>
+              <div class="p-3 bg-amber-50 rounded-xl border border-amber-100">
+                <div class="font-semibold text-amber-800">2. ต้องการเติบโตในสายงานใหม่</div>
+                <div class="text-amber-600 mt-1 font-bold text-lg">30%</div>
+                <p class="text-[10px] text-amber-500">ข้อเสนอแนะ: สนับสนุนงบเรียน Up-skill</p>
+              </div>
+              <div class="p-3 bg-indigo-50 rounded-xl border border-indigo-100">
+                <div class="font-semibold text-indigo-800">3. ค่าตอบแทนและสวัสดิการ</div>
+                <div class="text-indigo-600 mt-1 font-bold text-lg">25%</div>
+                <p class="text-[10px] text-indigo-500">ข้อเสนอแนะ: ปรับเปลี่ยนเป็น Flexible Wallet</p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -311,6 +340,106 @@
 
   </main>
 
+  <!-- Leave Request Modal -->
+  <div id="leave-modal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-xl space-y-4">
+      <div class="flex justify-between items-center">
+        <h3 class="text-base font-bold text-slate-800 flex items-center gap-2">
+          🌿 ยื่นใบลาหยุด / พักใจ
+        </h3>
+        <button onclick="closeLeaveModal()" class="text-slate-400 hover:text-slate-600 text-lg">✕</button>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block font-medium text-slate-700 mb-1">ประเภทการลา</label>
+          <select id="leave-type" class="w-full p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-teal-500">
+            <option value="mental">🌿 ลาพักใจ (Mental Health Day - ไม่เสียวันลา)</option>
+            <option value="vacation">🏖️ ลาพักร้อน (Vacation Leave)</option>
+            <option value="sick">🤒 ลาป่วย (Sick Leave)</option>
+          </select>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block font-medium text-slate-700 mb-1">ช่วงเวลา</label>
+            <select class="w-full p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-teal-500">
+              <option>เต็มวัน (Full Day)</option>
+              <option>ครึ่งเช้า (Morning)</option>
+              <option>ครึ่งบ่าย (Afternoon)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-medium text-slate-700 mb-1">วันที่ต้องการลา</label>
+            <input type="date" value="2026-11-02" class="w-full p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-teal-500">
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-medium text-slate-700 mb-1">เหตุผลการขอลา (สั้นๆ)</label>
+          <input type="text" placeholder="เช่น รู้สึกเหนื่อยล้าสะสม ต้องการชาร์จแบตร่างกาย" class="w-full p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-teal-500">
+        </div>
+      </div>
+
+      <button onclick="submitLeave()" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium text-xs py-3 rounded-xl transition-colors shadow-md">
+        ส่งใบลาอนุมัติอัตโนมัติ
+      </button>
+    </div>
+  </div>
+
+  <!-- Resignation / Offboarding Modal -->
+  <div id="resign-modal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-xl space-y-4 max-h-[90vh] overflow-y-auto">
+      <div class="flex justify-between items-center border-b pb-3">
+        <div>
+          <h3 class="text-base font-bold text-slate-800 flex items-center gap-2">
+            👋 แจ้งความประสงค์ลาออก (Exit Portal)
+          </h3>
+          <p class="text-[11px] text-slate-500">เราเสียใจที่คุณจะจากไป โปรดแบ่งปันเหตุผลเพื่อช่วยเราพัฒนาองค์กรให้ดีขึ้น</p>
+        </div>
+        <button onclick="closeResignModal()" class="text-slate-400 hover:text-slate-600 text-lg">✕</button>
+      </div>
+
+      <div class="space-y-4 text-xs">
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">1. เหตุผลหลักในการตัดสินใจลาออก *</label>
+          <select id="resign-reason" class="w-full p-2.5 rounded-xl border border-rose-200 focus:outline-none focus:border-rose-500 bg-rose-50/30">
+            <option value="">-- โปรดเลือกสาเหตุหลัก --</option>
+            <option value="burnout">ภาวะ Burnout / ความเครียดสะสม / ภาระงานหนักเกินไป</option>
+            <option value="career">ต้องการเติบโตในสายงานใหม่ / ได้รับโอกาสใหม่ที่ดีกว่า</option>
+            <option value="compensation">โครงสร้างค่าตอบแทนและสวัสดิการไม่สอดคล้อง</option>
+            <option value="environment">สภาพแวดล้อม วัฒนธรรมองค์กร หรือความสัมพันธ์ในทีม</option>
+            <option value="personal">ปัญหาสุขภาพส่วนตัว / ภาระทางบ้านและครอบครัว</option>
+            <option value="other">สาเหตุอื่นๆ</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">2. อธิบายรายละเอียดเพิ่มเติม หรือสิ่งที่องค์กรควรปรับปรุง *</label>
+          <textarea rows="3" class="w-full p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-rose-500" placeholder="โปรดแชร์ความคิดเห็นอย่างตรงไปตรงมา ข้อมูลนี้จะถูกนำไปวิเคราะห์เพื่อปรับปรุงคุณภาพชีวิตของเพื่อนๆ ในองค์กรต่อไป..."></textarea>
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">3. วันที่คาดว่าจะทำงานวันสุดท้าย</label>
+          <input type="date" value="2026-11-30" class="w-full p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-rose-500">
+        </div>
+
+        <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 text-amber-800 text-[11px]">
+          🔒 **การคุ้มครองข้อมูลส่วนบุคคล:** คำตอบจากแบบสอบถามนี้สามารถเลือกให้แสดงแบบไม่ระบุชื่อตัวตน (Anonymized) ในรายงาน HR Dashboard ได้
+        </div>
+      </div>
+
+      <div class="flex gap-2 pt-2">
+        <button onclick="closeResignModal()" class="w-1/2 bg-slate-100 hover:bg-slate-200 text-slate-600 font-medium text-xs py-2.5 rounded-xl transition-colors">
+          ยกเลิก
+        </button>
+        <button onclick="submitResign()" class="w-1/2 bg-rose-600 hover:bg-rose-700 text-white font-medium text-xs py-2.5 rounded-xl transition-colors shadow-md">
+          ยืนยันการแจ้งลาออก
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- Redeem Modal -->
   <div id="redeem-modal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-center shadow-xl space-y-4">
@@ -332,43 +461,6 @@
           ปิดหน้าต่าง
         </button>
       </div>
-    </div>
-  </div>
-
-  <!-- Peer Gift Modal -->
-  <div id="gift-modal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-xl space-y-4">
-      <div class="flex justify-between items-center">
-        <h3 class="text-base font-bold text-slate-800 flex items-center gap-2">
-          🎁 ส่งต่อกำลังใจให้เพื่อนร่วมทีม
-        </h3>
-        <button onclick="closeGiftModal()" class="text-slate-400 hover:text-slate-600 text-lg">✕</button>
-      </div>
-
-      <div class="space-y-3 text-xs">
-        <div>
-          <label class="block font-medium text-slate-700 mb-1">เลือกเพื่อนร่วมงาน</label>
-          <select class="w-full p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-indigo-500">
-            <option>สมชาย (บอย) - Marketing</option>
-            <option>ภัทรา (พลอย) - Developer</option>
-            <option>ณัฐดนัย (นัท) - Customer Support</option>
-          </select>
-        </div>
-
-        <div>
-          <label class="block font-medium text-slate-700 mb-1">จำนวน Mood Coins ที่ต้องการส่ง</label>
-          <input type="number" value="100" class="w-full p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-indigo-500">
-        </div>
-
-        <div>
-          <label class="block font-medium text-slate-700 mb-1">ข้อความฮีลใจ/ให้กำลังใจ</label>
-          <textarea rows="3" class="w-full p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-indigo-500" placeholder="เห็นช่วงนี้ลุยโปรเจกต์หนัก พักผ่อนบ้างนะเพื่อน! ส่งกาแฟมาให้ฮีลใจจ้า ☕✨"></textarea>
-        </div>
-      </div>
-
-      <button onclick="submitGift()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-xs py-3 rounded-xl transition-colors shadow-md">
-        ส่งต่อพลังบวกทันที
-      </button>
     </div>
   </div>
 
@@ -560,7 +652,7 @@
               AI Benefit Matcher: แนะนำพิเศษสำหรับคุณ
               <span class="bg-amber-200 text-amber-800 text-[10px] px-2 py-0.5 rounded-full font-normal">ตรวจพบความเหนื่อยล้าสะสม</span>
             </h4>
-            <p class="text-xs text-amber-800 mt-1">เราเห็นว่าคุณลุยงานหนักมาตลอดสัปดาห์! สัปดาห์นี้ขอแนะนำสวัสดิการ **"นวดอโรมาฮีลใจ 60 นาที"** หรือ **"สิทธิ์ Mental Health Half-Day Off"** เพื่อเติมชาร์จแบตเตอรี่ร่างให้พร้อมกลับมาลุยต่อครับ</p>
+            <p class="text-xs text-amber-800 mt-1">เราเห็นว่าคุณลุยงานหนักมาตลอดสัปดาห์! สัปดาห์นี้ขอแนะนำสวัสดิการ **"นวดอโรมาฮีลใจ 60 นาที"** หรือยื่น **"ลาพักใจ (Mental Health Day)"** ได้ทันทีครับ</p>
           </div>
         `;
       } else if (type === 'happy') {
@@ -586,7 +678,7 @@
               AI Benefit Matcher: ตรวจพบภาวะความเครียดสูง (High Stress)
               <span class="bg-rose-200 text-rose-800 text-[10px] px-2 py-0.5 rounded-full font-normal">ต้องการการดูแลทันที</span>
             </h4>
-            <p class="text-xs text-rose-800 mt-1">คุณกำลังแบกความเครียดไว้มากเกินไป ขอแนะนำ **"ปรึกษานักจิตวิทยาออนไลน์ (Tele-mental Health)"** แบบส่วนตัว หรือใช้สิทธิ์ **"Mental Health Half-Day Off"** พักผ่อนทันทีโดยไม่มีผลต่อประวัติการทำงานครับ</p>
+            <p class="text-xs text-rose-800 mt-1">คุณกำลังแบกความเครียดไว้มากเกินไป ขอแนะนำ **"ปรึกษานักจิตวิทยาออนไลน์ (Tele-mental Health)"** แบบส่วนตัว หรือใช้ปุ่ม **"ยื่นใบลาหยุด"** ด้านบนเพื่อใช้สิทธิ์ Mental Health Half-Day Off ได้ทันทีครับ</p>
           </div>
         `;
       }
@@ -607,7 +699,26 @@
       }
     }
 
-    // Redeem Logic
+    // Modals Handlers
+    function openLeaveModal() { document.getElementById('leave-modal').classList.remove('hidden'); }
+    function closeLeaveModal() { document.getElementById('leave-modal').classList.add('hidden'); }
+    function submitLeave() {
+      alert("ยื่นใบลาพักใจสำเร็จ! ระบบอนุมัติอัตโนมัติและแจ้งเตือนหัวหน้างานเรียบร้อยแล้ว");
+      closeLeaveModal();
+    }
+
+    function openResignModal() { document.getElementById('resign-modal').classList.remove('hidden'); }
+    function closeResignModal() { document.getElementById('resign-modal').classList.add('hidden'); }
+    function submitResign() {
+      const reason = document.getElementById('resign-reason').value;
+      if (!reason) {
+        alert("โปรดระบุสาเหตุหลักในการตัดสินใจลาออกด้วยครับ");
+        return;
+      }
+      alert("ยื่นเรื่องแจ้งลาออกและส่งบันทึก Exit Survey สำเร็จ ข้อมูลของคุณจะถูกนำไปวิเคราะห์เพื่อพัฒนาองค์กรต่อไปครับ");
+      closeResignModal();
+    }
+
     function redeemBenefit(title, cost) {
       if (userCoins < cost) {
         alert("ขออภัย เหรียญ Mood Coins ของคุณไม่เพียงพอ");
@@ -620,28 +731,12 @@
       document.getElementById('redeem-modal').classList.remove('hidden');
     }
 
-    function closeRedeemModal() {
-      document.getElementById('redeem-modal').classList.add('hidden');
-    }
-
-    function openGiftModal() {
-      document.getElementById('gift-modal').classList.remove('hidden');
-    }
-
-    function closeGiftModal() {
-      document.getElementById('gift-modal').classList.add('hidden');
-    }
-
-    function submitGift() {
-      alert("ส่งต่อพลังบวกและ Mood Coins ให้เพื่อนร่วมงานสำเร็จ!");
-      closeGiftModal();
-    }
+    function closeRedeemModal() { document.getElementById('redeem-modal').classList.add('hidden'); }
 
     // Initialize Page
     document.addEventListener("DOMContentLoaded", function() {
       renderBenefits('all');
     });
-    // Fallback trigger
     renderBenefits('all');
   </script>
 </body>
